@@ -129,10 +129,6 @@
       <Project>{DF91048E-3095-4613-9C33-C0BB1733B9B7}</Project>
       <Name>Traveler</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Xamarin.Forms.DebugRainbows.Multi\Xamarin.Forms.DebugRainbows.Multi.csproj">
-      <Project>{E7999FC8-1966-4FD2-866E-4F775A32F7D3}</Project>
-      <Name>Xamarin.Forms.DebugRainbows.Multi</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fa-regular.otf" />

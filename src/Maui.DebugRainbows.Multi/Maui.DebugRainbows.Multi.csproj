@@ -1,0 +1,186 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+        <RootNamespace>Maui.DebugRainbows.Multi</RootNamespace>
+        <UseMaui>true</UseMaui>
+        <SingleProject>true</SingleProject>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- Display name -->
+        <ApplicationTitle>Maui.DebugRainbows.Multi</ApplicationTitle>
+
+        <!-- App Identifier -->
+        <ApplicationId>com.companyname.maui.debugrainbows.multi</ApplicationId>
+
+        <!-- Versions -->
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationVersion>1</ApplicationVersion>
+
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+
+
+        <AssemblyName>DebugRainbowCompat</AssemblyName>
+        <RootNamespace>DebugRainbowCompat</RootNamespace>
+        <Product>$(AssemblyName) ($(TargetFramework))</Product>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <AssemblyFileVersion>1.0.1</AssemblyFileVersion>
+        <Version>1.0.0-pre</Version>
+        <PackOnBuild>true</PackOnBuild>
+        <NeutralLanguage>en</NeutralLanguage>
+        <LangVersion>default</LangVersion>
+        <DefineConstants>$(DefineConstants);</DefineConstants>
+        <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+        <LangVersion>latest</LangVersion>
+        <PackageReleaseNotes>https://github.com/AdrianoBinhara/Xamarin.Forms.DebugRainbows/releases</PackageReleaseNotes>
+        <PackageProjectUrl>https://github.com/AdrianoBinhara/Xamarin.Forms.DebugRainbows</PackageProjectUrl>
+        <PackageIconUrl>https://github.com/AdrianoBinhara/Xamarin.Forms.DebugRainbows/blob/master/images/icon.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/AdrianoBinhara/Xamarin.Forms.DebugRainbows</RepositoryUrl>
+        <PackageTags>maui, control, debug, rainbow, layout shape, polygon, view</PackageTags>
+        <Title>DebugRainbow for Maui</Title>
+        <Summary>The package you didn't even know you needed!</Summary>
+        <Description>An implementation of DebugRainbows for Maui</Description>
+        <Owners>Adriano Binhara</Owners>
+        <Authors>Adriano Binhara</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <DebugType>pdbonly</DebugType>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- App Icon -->
+
+        <!-- Splash Screen -->
+
+        <!-- Images -->
+        <MauiImage Include="Resources\Images\*"/>
+        <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185"/>
+
+        <!-- Custom Fonts -->
+        <MauiFont Include="Resources\Fonts\*"/>
+
+        <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiXaml Remove="App.xaml" />
+      <MauiXaml Remove="AppShell.xaml" />
+      <MauiXaml Remove="MainPage.xaml" />
+      <MauiXaml Remove="Resources\**" />
+      <MauiXaml Remove="Platforms\MacCatalyst\**" />
+      <MauiXaml Remove="Platforms\Tizen\**" />
+      <MauiXaml Remove="Platforms\Windows\**" />
+      <MauiXaml Remove="Properties\**" />
+      <MauiXaml Remove="Platforms\Android\Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="App.xaml.cs" />
+      <Compile Remove="AppShell.xaml.cs" />
+      <Compile Remove="MainPage.xaml.cs" />
+      <Compile Remove="MauiProgram.cs" />
+      <Compile Remove="Resources\**" />
+      <Compile Remove="Platforms\MacCatalyst\**" />
+      <Compile Remove="Platforms\Tizen\**" />
+      <Compile Remove="Platforms\Windows\**" />
+      <Compile Remove="Platforms\Android\MainActivity.cs" />
+      <Compile Remove="Platforms\Android\MainApplication.cs" />
+      <Compile Remove="Platforms\iOS\AppDelegate.cs" />
+      <Compile Remove="Platforms\iOS\Program.cs" />
+      <Compile Remove="Properties\**" />
+      <Compile Remove="Platforms\Android\Resources\**" />
+      <Compile Update="Platforms\Shared\DebugGridOrigin.cs">
+        <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+      </Compile>
+      <Compile Update="Platforms\Shared\DebugGridWrapper.cs">
+        <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiCss Remove="Resources\**" />
+      <MauiCss Remove="Platforms\MacCatalyst\**" />
+      <MauiCss Remove="Platforms\Tizen\**" />
+      <MauiCss Remove="Platforms\Windows\**" />
+      <MauiCss Remove="Properties\**" />
+      <MauiCss Remove="Platforms\Android\Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Resources\**" />
+      <EmbeddedResource Remove="Platforms\MacCatalyst\**" />
+      <EmbeddedResource Remove="Platforms\Tizen\**" />
+      <EmbeddedResource Remove="Platforms\Windows\**" />
+      <EmbeddedResource Remove="Properties\**" />
+      <EmbeddedResource Remove="Platforms\Android\Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AndroidAarLibrary Remove="Resources\**" />
+      <AndroidAarLibrary Remove="Platforms\MacCatalyst\**" />
+      <AndroidAarLibrary Remove="Platforms\Tizen\**" />
+      <AndroidAarLibrary Remove="Platforms\Windows\**" />
+      <AndroidAarLibrary Remove="Properties\**" />
+      <AndroidAarLibrary Remove="Platforms\Android\Resources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\**" />
+      <None Remove="Platforms\MacCatalyst\**" />
+      <None Remove="Platforms\Tizen\**" />
+      <None Remove="Platforms\Windows\**" />
+      <None Remove="Platforms\Android\AndroidManifest.xml" />
+      <None Remove="Platforms\iOS\Info.plist" />
+      <None Remove="Properties\**" />
+      <None Include="Platforms\iOS\DebugGridWrapperRenderer.cs" />
+      <None Remove="Platforms\Android\Resources\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    </ItemGroup>
+    <ItemGroup>
+      <ImageAsset Remove="Platforms\MacCatalyst\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <InterfaceDefinition Remove="Platforms\MacCatalyst\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AndroidResource Remove="Platforms\Android\Resources\**" />
+    </ItemGroup>
+
+</Project>

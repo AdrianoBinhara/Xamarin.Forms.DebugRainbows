@@ -17,7 +17,4 @@
     <Folder Include="Effects\" />
     <Folder Include="Models\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Xamarin.Forms.DebugRainbows.Multi\Xamarin.Forms.DebugRainbows.Multi.csproj" />
-  </ItemGroup>
 </Project>
