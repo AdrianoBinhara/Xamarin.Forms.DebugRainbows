@@ -18,6 +18,7 @@ public class DebugGridWrapper : ContentView
     public bool MakeGridRainbows { get; set; }
     public DebugGridOrigin GridOrigin { get; set; }
 
+  
     public DebugGridWrapper()
     {
         InputTransparent = true;

@@ -1,2 +1,2 @@
-[assembly: XmlnsDefinition("https://github.com/AdrianoBinhara/DebugRainbows", 
+[assembly: XmlnsDefinition("https://github.com/AdrianoBinhara/Xamarin.Forms.DebugRainbows", 
     "DebugRainbows")]

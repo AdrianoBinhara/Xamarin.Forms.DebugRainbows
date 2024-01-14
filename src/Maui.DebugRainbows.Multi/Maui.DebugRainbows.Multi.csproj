@@ -29,9 +29,9 @@
         <AssemblyName>DebugRainbowCompat</AssemblyName>
         <RootNamespace>DebugRainbowCompat</RootNamespace>
         <Product>$(AssemblyName) ($(TargetFramework))</Product>
-        <AssemblyVersion>1.0.1</AssemblyVersion>
-        <AssemblyFileVersion>1.0.1</AssemblyFileVersion>
-        <Version>1.0.1-pre</Version>
+        <AssemblyVersion>1.0.4</AssemblyVersion>
+        <AssemblyFileVersion>1.0.4</AssemblyFileVersion>
+        <Version>1.0.4-pre</Version>
         <PackOnBuild>true</PackOnBuild>
         <NeutralLanguage>en</NeutralLanguage>
         <LangVersion>default</LangVersion>

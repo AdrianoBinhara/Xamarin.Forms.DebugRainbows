@@ -176,15 +176,15 @@ public class DebugRainbow
             return (bool)b.GetValue(InverseProperty);
         }
 
-        // public static void SetShowGrid(BindableObject b, bool value)
-        // {
-        //     b.SetValue(ShowGridProperty, value);
-        // }
+        public static void SetShowGrid(BindableObject b, bool value)
+        {
+            b.SetValue(ShowGridProperty, value);
+        }
 
-        // public static bool GetShowGrid(BindableObject b)
-        // {
-        //     return (bool)b.GetValue(ShowGridProperty);
-        // }
+        public static bool GetShowGrid(BindableObject b)
+        {
+            return (bool)b.GetValue(ShowGridProperty);
+        }
 
         public static void SetGridOrigin(BindableObject b, DebugGridOrigin value)
         {
@@ -200,15 +200,14 @@ public class DebugRainbow
         {
 #if DEBUG
             var showColors = GetShowColors(bindable);
-            // var showGrid = GetShowGrid(bindable);
+            var showGrid = GetShowGrid(bindable);
 
             // Property changed implementation goes here
             if (bindable.GetType().IsSubclassOf(typeof(Page)))
             {
                 var page = (bindable as Page);
 
-                // if (showColors || showGrid)
-                if (showColors)
+                if (showColors || showGrid)
                     page.Appearing += Page_Appearing;
                 else
                     page.Appearing -= Page_Appearing;
@@ -217,11 +216,10 @@ public class DebugRainbow
                 // However, it doesn't get called when using Hot Reload, so we also hook up Appearing.
                 // Inside of the handler we check whether or not the Grid overlay has already been added.
                 
-                // if (showGrid)
-                //     page.SizeChanged += Page_SizeChanged;
-                // else
-                //     page.SizeChanged -= Page_SizeChanged;
-                page.SizeChanged -= Page_SizeChanged;
+                if (showGrid)
+                    page.SizeChanged += Page_SizeChanged;
+                else
+                    page.SizeChanged -= Page_SizeChanged;
             }
             else if (bindable.GetType().IsSubclassOf(typeof(View)))
             {
@@ -259,13 +257,13 @@ public class DebugRainbow
             if (sender.GetType().IsSubclassOf(typeof(ContentPage)))
             {
                 var showColors = GetShowColors(sender as Page);
-                // var showGrid = GetShowGrid(sender as Page);
+                var showGrid = GetShowGrid(sender as Page);
 
                 if (showColors)
                     IterateChildren((sender as ContentPage).Content);
 
-                // if (showGrid)
-                //     BuildGrid(sender as ContentPage);
+                if (showGrid)
+                    BuildGrid(sender as ContentPage);
             }
             else if (sender is IViewContainer<Page>)
             {
@@ -340,6 +338,17 @@ public class DebugRainbow
                     foreach (var item in ((Layout)content).Children)
                     {
                         IterateChildren(item);
+                    }
+                }
+                else if (content is ScrollView scrollView)
+                {
+                    scrollView.BackgroundColor = GetRandomColor(); 
+                    if (scrollView.Content != null && scrollView.Content.GetType().IsSubclassOf(typeof(Layout)))
+                    {
+                        foreach (var child in ((Layout)scrollView.Content).Children)
+                        {
+                            IterateChildren(child);
+                        }
                     }
                 }
                 else if (content.GetType().IsSubclassOf(typeof(View)))
