@@ -1,5 +1,7 @@
 
-namespace Maui.DebugRainbows.Multi.Platforms.SharedPlatform;
+using DebugRainbowCompat.SharedPlatform;
+
+namespace DebugRainbowCompat;
 
 public class DebugRainbow
 {

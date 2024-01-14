@@ -1,6 +1,6 @@
 ﻿
 using Android.Content;
-using Maui.DebugRainbows.Multi.Platforms.SharedPlatform;
+using DebugRainbowCompat.SharedPlatform;
 using AView = Android.Views.View;
 using Microsoft.Maui.Controls.Platform;
 

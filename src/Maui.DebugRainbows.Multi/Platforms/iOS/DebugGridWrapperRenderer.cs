@@ -3,7 +3,7 @@ using System.Drawing;
 using CoreGraphics;
 using UIKit;
 using CoreAnimation;
-using Maui.DebugRainbows.Multi.Platforms.SharedPlatform;
+using DebugRainbowCompat.SharedPlatform;
 using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Platform;
 using Color = Microsoft.Maui.Graphics.Color;

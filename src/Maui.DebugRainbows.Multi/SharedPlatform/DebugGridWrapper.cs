@@ -1,5 +1,5 @@
 
-namespace Maui.DebugRainbows.Multi.Platforms.SharedPlatform;
+namespace DebugRainbowCompat.SharedPlatform;
 
 public class DebugGridWrapper : ContentView
 {

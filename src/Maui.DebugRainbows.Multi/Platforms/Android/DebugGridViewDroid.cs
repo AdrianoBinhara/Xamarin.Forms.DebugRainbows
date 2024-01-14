@@ -4,7 +4,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Util;
-using Maui.DebugRainbows.Multi.Platforms.SharedPlatform;
+using DebugRainbowCompat.SharedPlatform;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Color = Microsoft.Maui.Graphics.Color;
 using Paint = Android.Graphics.Paint;
