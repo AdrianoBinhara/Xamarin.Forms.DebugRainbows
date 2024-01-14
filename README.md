@@ -3,7 +3,7 @@
 # Maui.DebugRainbows
 The package you didn't even know you needed!
 
-[![NuGet](https://img.shields.io/nuget/vpre/Xamarin.Forms.DebugRainbows.svg)](https://www.nuget.org/packages/Maui.DebugRainbows)
+[![NuGet](https://img.shields.io/nuget/vpre/Xamarin.Forms.DebugRainbows.svg)](https://www.nuget.org/packages/DebugRainbowCompat/)
 
 Forked from DebugRainbows for Xamarin.Forms. 
 This amazing package helps you Debug your visual implementations.
